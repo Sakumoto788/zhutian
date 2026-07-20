@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>诸天纪元 · 史诗玄幻巨著</title>
+
+    <!-- ============================================================
+    字体：使用 Google Fonts 加载思源宋体，国内访问慢时可替换为系统字体
+    ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ==========================================================
+               0. 全局重置 & 基础
+               ========================================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* 禁止滚动，保持全屏 */;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', 'STSong', '华文宋体', serif;
+            background: #0a0806;
+            /* 视频加载失败时的后备色 */;
+        }
+
+        /* ==========================================================
+               1. 视频背景
+               ========================================================== */
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            /* 覆盖全屏，保持比例裁剪 */
+            z-index: 0;
+            pointer-events: none;
+            /* 禁止鼠标事件，让文字可被选中 */;
+        }
+
+        /* ==========================================================
+               2. 遮罩层 — 径向渐变让中心通透，四周压暗
+               ========================================================== */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            background:
+                /* 中心区域几乎透明，让文字清晰 */
+                radial-gradient(ellipse at center,
+                    rgba(0, 0, 0, 0.20) 0%,
+                    rgba(0, 0, 0, 0.55) 50%,
+                    rgba(0, 0, 0, 0.80) 90%,
+                    rgba(0, 0, 0, 0.92) 100%);
+            pointer-events: none;
+        }
+
+        /* ==========================================================
+               3. 内容容器 — 绝对居中
+               ========================================================== */
+        .content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 90%;
+            max-width: 1100px;
+            pointer-events: none;
+            /* 让鼠标穿透，但内部文字可选中 */;
+        }
+
+        /* ==========================================================
+               4. 主标题：「诸天纪元」
+               ========================================================== */
+        .title {
+            font-size: clamp(4.5rem, 16vw, 12rem);
+            /* 响应式字号 */
+            font-weight: 900;
+            font-family: 'Noto Serif SC', 'SimSun', 'STSong', '华文宋体', serif;
+            letter-spacing: 0.12em;
+            /* 字间距，更显大气 */
+            line-height: 1.2;
+            color: #f7e5b5;
+            /* 基底色 */
+
+            /* ---------- 金色渐变 ---------- */
+            background: linear-gradient(180deg,
+                    #f9e8b6 0%,
+                    #e8c97a 25%,
+                    #d4a74a 50%,
+                    #c4923a 75%,
+                    #b8832e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+            /* ---------- 多层发光阴影 ---------- */
+            text-shadow:
+                0 0 20px rgba(212, 167, 74, 0.25),
+                0 0 60px rgba(212, 167, 74, 0.15),
+                0 0 120px rgba(212, 167, 74, 0.08),
+                0 4px 30px rgba(0, 0, 0, 0.6);
+
+            /* ---------- 动画：光晕呼吸 + 微浮动 ---------- */
+            animation: titleGlow 4s ease-in-out infinite alternate,
+                titleFloat 6s ease-in-out infinite alternate;
+            transform-origin: center;
+            will-change: transform, filter;
+            pointer-events: auto;
+            /* 允许选中文字 */;
+        }
+
+        /* ---------- 光晕呼吸动画 ---------- */
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 20px rgba(212, 167, 74, 0.20)) drop-shadow(0 0 60px rgba(212, 167, 74, 0.08));
+                text-shadow:
+                    0 0 20px rgba(212, 167, 74, 0.25),
+                    0 0 60px rgba(212, 167, 74, 0.15),
+                    0 0 120px rgba(212, 167, 74, 0.08),
+                    0 4px 30px rgba(0, 0, 0, 0.6);
+            }
+            100% {
+                filter: drop-shadow(0 0 40px rgba(212, 167, 74, 0.50)) drop-shadow(0 0 100px rgba(212, 167, 74, 0.25)) drop-shadow(0 0 160px rgba(212, 167, 74, 0.10));
+                text-shadow:
+                    0 0 40px rgba(212, 167, 74, 0.40),
+                    0 0 100px rgba(212, 167, 74, 0.25),
+                    0 0 180px rgba(212, 167, 74, 0.12),
+                    0 4px 40px rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        /* ---------- 微浮动动画 ---------- */
+        @keyframes titleFloat {
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* ==========================================================
+               5. 副标题 & 作者信息
+               ========================================================== */
+        .subtitle {
+            margin-top: clamp(0.8rem, 2vh, 2.2rem);
+            font-size: clamp(1rem, 2.2vw, 1.8rem);
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            color: rgba(247, 229, 181, 0.75);
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
+            animation: subtitleFade 2.5s ease-out 0.6s both;
+            pointer-events: auto;
+        }
+
+        .subtitle i {
+            font-style: normal;
+            display: inline-block;
+            margin: 0 0.15em;
+        }
+
+        .author {
+            margin-top: clamp(1.2rem, 3vh, 2.8rem);
+            font-size: clamp(0.8rem, 1.4vw, 1.2rem);
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            color: rgba(247, 229, 181, 0.45);
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+            opacity: 0.7;
+            animation: subtitleFade 2.5s ease-out 1.2s both;
+            pointer-events: auto;
+        }
+
+        .author span {
+            display: inline-block;
+            padding: 0 0.6em;
+            border-left: 1px solid rgba(247, 229, 181, 0.2);
+            border-right: 1px solid rgba(247, 229, 181, 0.2);
+        }
+
+        @keyframes subtitleFade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================================
+               6. 底部版权 / 装饰信息（极小）
+               ========================================================== */
+        .footer {
+            position: fixed;
+            bottom: 2.4rem;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            text-align: center;
+            font-size: clamp(0.6rem, 0.8vw, 0.75rem);
+            letter-spacing: 0.2em;
+            color: rgba(247, 229, 181, 0.18);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+            pointer-events: none;
+            font-weight: 300;
+            animation: subtitleFade 3s ease-out 2s both;
+        }
+
+        /* ==========================================================
+               7. 响应式微调
+               ========================================================== */
+        @media (max-width: 768px) {
+            .title {
+                letter-spacing: 0.06em;
+                /* 小屏缩小字间距 */;
+            }
+            .subtitle {
+                letter-spacing: 0.2em;
+            }
+            .author {
+                letter-spacing: 0.15em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                letter-spacing: 0.04em;
+            }
+            .subtitle {
+                letter-spacing: 0.1em;
+                margin-top: 0.4rem;
+            }
+            .author {
+                margin-top: 0.6rem;
+            }
+            .footer {
+                bottom: 1.2rem;
+            }
+        }
+
+        /* ==========================================================
+               8. 辅助类：避免视频闪烁
+               ========================================================== */
+        .no-video .overlay {
+            background: radial-gradient(ellipse at center,
+                    #1a1410 0%,
+                    #0a0806 80%,
+                    #050302 100%);
+        }
+
+        /* ==========================================================
+               9. 鼠标悬停时增强光晕（桌面端小彩蛋）
+               ========================================================== */
+        @media (hover: hover) {
+            .title:hover {
+                animation-play-state: paused;
+                filter: drop-shadow(0 0 60px rgba(212, 167, 74, 0.6)) drop-shadow(0 0 140px rgba(212, 167, 74, 0.3));
+                transition: filter 0.6s ease;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================
+    视频背景 — 请将你的视频文件放在同目录下，并修改 src 路径
+    ========================================================== -->
+    <video id="bgVideo" autoplay muted loop playsinline preload="auto">
+        <!-- ★★★ 请将下方 src 改为你本地视频的实际路径 ★★★ -->
+        <source src="https://res.cloudinary.com/ mdohlfpp/视频/上传/v178455185/op_ebaoqv.mp4
+
+
+" type="video/mp4" />
+        <!-- 如需支持更多格式，可添加 webm -->
+        <!-- <source src="https://res.cloudinary.com/ mdohlfpp/视频/上传/v178455185/op_ebaoqv.mp4
+
+
+" /> -->
+        <!-- 如果所有视频源都失败，显示纯色背景（已在 body 中设置） -->
+        您的浏览器不支持 HTML5 视频。
+    </video>
+
+    <!-- 遮罩层 -->
+    <div class="overlay"></div>
+
+    <!-- ==========================================================
+    主内容
+    ========================================================== -->
+    <div class="content">
+        <!-- ★★★ 四个大字：「诸天纪元」 ★★★ -->
+        <h1 class="title">诸天纪元</h1>
+
+        <!-- 副标题（可自定义修改） -->
+        <p class="subtitle">—— 一部横跨诸天的史诗 ——</p>
+
+        <!-- 作者名（可自定义修改） -->
+        <p class="author"><span>老 九 门</span></p>
+    </div>
+
+    <!-- 底部版权（极淡装饰） -->
+    <div class="footer">✦ 万 界 之 上 · 纪 元 之 始 ✦</div>
+
+    <!-- ==========================================================
+    JavaScript：控制视频播放 & 降级处理
+    ========================================================== -->
+    <script>
+        (function() {
+            'use strict';
+
+            const video = document.getElementById('bgVideo');
+            const body = document.body;
+
+            // ---------- 1. 确保视频自动播放 ----------
+            // 浏览器策略：带 muted 的 video 可自动播放
+            // 如果用户交互后仍未播放，则手动尝试
+            function tryPlay() {
+                if (!video) return;
+                video.play().catch(function(err) {
+                    // 若自动播放被阻止，静默处理
+                    console.log('视频自动播放被阻止，等待用户交互...');
+                    // 用户点击页面任意位置时尝试播放
+                    document.addEventListener('click', function playOnClick() {
+                        video.play().catch(function(e) { /* 忽略 */ });
+                        document.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+            }
+
+            // ---------- 2. 视频加载失败时添加降级类 ----------
+            video.addEventListener('error', function() {
+                body.classList.add('no-video');
+                // 如果视频加载失败，显示纯色背景 + 渐变遮罩
+                console.log('视频加载失败，使用纯色背景降级。');
+            });
+
+            // 如果视频无法加载（如路径错误），也会触发 error
+            // 但有些浏览器可能不会触发 error，我们再加一个超时检测
+            setTimeout(function() {
+                if (video.readyState === 0) {
+                    // 4秒后如果 video 仍处于未初始化状态，认为加载失败
+                    body.classList.add('no-video');
+                }
+            }, 4000);
+
+            // ---------- 3. 启动播放 ----------
+            // 等 DOM 完全加载后再尝试
+            if (document.readyState === 'complete') {
+                tryPlay();
+            } else {
+                window.addEventListener('load', tryPlay);
+            }
+
+            // ---------- 4. 可见性变化时恢复播放（切回页面时续播） ----------
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden && video) {
+                    // 页面重新可见时，如果视频暂停了则恢复
+                    if (video.paused) {
+                        video.play().catch(function() {});
+                    }
+                }
+            });
+
+            // ---------- 5. 移动端：防止触摸时页面滚动/缩放 ----------
+            document.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+
+            console.log('✦ 诸天纪元 · 宣传页加载完成 ✦');
+            console.log('★ 提示：请将你的视频文件路径替换到 <video> 的 src 中。');
+
+        })();
+    </script>
+
+</body>
+</html>
