@@ -106,7 +106,7 @@
         }
 
         /* ==========================================================
-           主标题 — 鎏金风格 + 通用黑体
+           主标题 — 烈焰炽金渐变（流动版）
            ========================================================== */
         .title {
             font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
@@ -118,58 +118,42 @@
             display: block;
             text-align: center;
 
-            background: linear-gradient(180deg,
-                    #fff5d0 0%,
-                    #f5d68a 12%,
-                    #e8b84a 28%,
-                    #d4942a 48%,
-                    #b87820 62%,
-                    #d4942a 78%,
-                    #f0c860 100%);
+            /* ★★★ 烈焰炽金渐变 ★★★ */
+            background: linear-gradient(135deg,
+                    #ff2d00 0%,
+                    #ff6a00 20%,
+                    #ffb800 45%,
+                    #ffd700 60%,
+                    #ff8c00 80%,
+                    #ff2d00 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientMove 5s ease infinite;
 
             text-shadow:
-                0 0 20px rgba(255, 215, 120, 0.35),
-                0 0 50px rgba(255, 200, 80, 0.20),
-                0 0 100px rgba(255, 180, 60, 0.12),
-                0 0 180px rgba(255, 160, 40, 0.06),
+                0 0 20px rgba(255, 45, 0, 0.3),
+                0 0 60px rgba(255, 184, 0, 0.2),
                 0 4px 20px rgba(0, 0, 0, 0.6),
-                0 8px 60px rgba(0, 0, 0, 0.5),
-                0 16px 100px rgba(0, 0, 0, 0.4),
-                2px 2px 8px rgba(255, 220, 150, 0.08),
-                -1px -1px 4px rgba(255, 200, 100, 0.06);
+                0 8px 60px rgba(0, 0, 0, 0.5);
 
-            filter: drop-shadow(0 0 40px rgba(255, 200, 100, 0.08)) drop-shadow(0 0 100px rgba(255, 180, 60, 0.04));
+            filter: drop-shadow(0 0 40px rgba(255, 107, 0, 0.10));
 
-            animation: royalGlow 5s ease-in-out infinite alternate,
-                royalFloat 7s ease-in-out infinite alternate;
             transform-origin: center;
-            will-change: transform, filter, text-shadow;
+            will-change: transform, background-position;
         }
 
-        @keyframes royalGlow {
+        /* 渐变流动动画 */
+        @keyframes gradientMove {
             0% {
-                filter: drop-shadow(0 0 30px rgba(255, 200, 100, 0.06)) drop-shadow(0 0 80px rgba(255, 180, 60, 0.03));
-                text-shadow: 0 0 15px rgba(255, 215, 120, 0.25), 0 0 40px rgba(255, 200, 80, 0.15), 0 0 80px rgba(255, 180, 60, 0.08), 0 0 160px rgba(255, 160, 40, 0.04), 0 4px 20px rgba(0, 0, 0, 0.6), 0 8px 60px rgba(0, 0, 0, 0.5), 0 16px 100px rgba(0, 0, 0, 0.4), 2px 2px 6px rgba(255, 220, 150, 0.08), -1px -1px 4px rgba(255, 200, 100, 0.06);
+                background-position: 0% 50%;
             }
             50% {
-                filter: drop-shadow(0 0 50px rgba(255, 200, 100, 0.15)) drop-shadow(0 0 120px rgba(255, 180, 60, 0.08)) drop-shadow(0 0 200px rgba(255, 160, 40, 0.04));
-                text-shadow: 0 0 30px rgba(255, 215, 120, 0.40), 0 0 60px rgba(255, 200, 80, 0.25), 0 0 120px rgba(255, 180, 60, 0.15), 0 0 200px rgba(255, 160, 40, 0.08), 0 6px 30px rgba(0, 0, 0, 0.7), 0 12px 80px rgba(0, 0, 0, 0.6), 0 20px 120px rgba(0, 0, 0, 0.5), 3px 3px 10px rgba(255, 220, 150, 0.12), -2px -2px 6px rgba(255, 200, 100, 0.10);
+                background-position: 100% 50%;
             }
             100% {
-                filter: drop-shadow(0 0 30px rgba(255, 200, 100, 0.06)) drop-shadow(0 0 80px rgba(255, 180, 60, 0.03));
-                text-shadow: 0 0 15px rgba(255, 215, 120, 0.25), 0 0 40px rgba(255, 200, 80, 0.15), 0 0 80px rgba(255, 180, 60, 0.08), 0 0 160px rgba(255, 160, 40, 0.04), 0 4px 20px rgba(0, 0, 0, 0.6), 0 8px 60px rgba(0, 0, 0, 0.5), 0 16px 100px rgba(0, 0, 0, 0.4), 2px 2px 6px rgba(255, 220, 150, 0.08), -1px -1px 4px rgba(255, 200, 100, 0.06);
-            }
-        }
-
-        @keyframes royalFloat {
-            0% {
-                transform: translateY(0px);
-            }
-            100% {
-                transform: translateY(-12px);
+                background-position: 0% 50%;
             }
         }
 
@@ -376,7 +360,7 @@
         @media (hover: hover) {
             .title:hover {
                 animation-play-state: paused;
-                filter: drop-shadow(0 0 60px rgba(255, 200, 100, 0.20)) drop-shadow(0 0 120px rgba(255, 180, 60, 0.12));
+                filter: drop-shadow(0 0 60px rgba(255, 45, 0, 0.3)) drop-shadow(0 0 120px rgba(255, 184, 0, 0.2));
                 transition: filter 0.6s ease;
             }
         }
@@ -385,11 +369,10 @@
 <body>
 
     <!-- ==========================================================
-    视频背景 — 已更新为你的新七牛云外链
+    视频背景 — 七牛云链接（daiji.mp4）
     ========================================================== -->
     <video id="bgVideo" autoplay muted loop playsinline preload="auto">
-        <!-- ★★★ 新链接 ★★★ -->
-        <source src="http://tih8qixrg.hn-bkt.clouddn.com/op.mp4" type="video/mp4" />
+        <source src="http://tih8qixrg.hn-bkt.clouddn.com/daiji.mp4" type="video/mp4" />
         您的浏览器不支持 HTML5 视频。
     </video>
 
@@ -485,9 +468,9 @@
                 e.preventDefault();
             }, { passive: false });
 
-            console.log('✦ 诸天纪元 · 通用字体版加载完成 ✦');
+            console.log('✦ 诸天纪元 · 烈焰炽金版加载完成 ✦');
             console.log('★ 作者：老九门 ★');
-            console.log('★ 视频链接已更新为：http://tih8qixrg.hn-bkt.clouddn.com/op.mp4 ★');
+            console.log('★ 视频链接：http://tih8qixrg.hn-bkt.clouddn.com/daiji.mp4 ★');
         })();
     </script>
 
