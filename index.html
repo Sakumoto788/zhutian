@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>诸天纪元 · 史诗玄幻巨著</title>
-
-    <!-- 通用字体：思源黑体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <title>诸天纪元 · 宣传页</title>
 
     <style>
         /* ===== 全局重置 ===== */
@@ -26,7 +21,7 @@
             overflow: hidden;
         }
         body {
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
             background: #0a0806;
         }
 
@@ -78,7 +73,7 @@
         }
 
         /* ==========================================================
-           排版布局
+           主内容排版
            ========================================================== */
 
         .content {
@@ -105,20 +100,17 @@
             animation: dividerFade 3s ease-out 1.5s both;
         }
 
-        /* ==========================================================
-           主标题 — 烈焰炽金渐变（流动版）
-           ========================================================== */
+        /* ===== 主标题 — 缩小 + 华文行楷 ===== */
         .title {
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
-            font-weight: 900;
-            font-size: clamp(5.5rem, 22vw, 15rem);
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
+            font-size: clamp(4rem, 14vw, 8rem);
             letter-spacing: 0.22em;
             line-height: 1.05;
             pointer-events: auto;
             display: block;
             text-align: center;
 
-            /* 烈焰炽金渐变 */
             background: linear-gradient(135deg,
                     #ff2d00 0%,
                     #ff6a00 20%,
@@ -144,7 +136,6 @@
             will-change: transform, background-position;
         }
 
-        /* 渐变流动动画 */
         @keyframes gradientMove {
             0% {
                 background-position: 0% 50%;
@@ -177,20 +168,46 @@
             }
         }
 
-        /* ===== 副标题 — 通用字体 ===== */
+        /* ===== 副标题 — 华文行楷，直接显示 ===== */
         .subtitle {
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
-            font-weight: 300;
-            font-size: clamp(0.75rem, 1.4vw, 1.3rem);
-            letter-spacing: 0.7em;
-            color: rgba(255, 220, 160, 0.30);
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
+            font-size: clamp(1rem, 1.8vw, 1.6rem);
+            letter-spacing: 0.5em;
+            color: rgba(255, 220, 160, 0.70);
             text-shadow:
                 0 2px 30px rgba(0, 0, 0, 0.8),
                 0 0 60px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            animation: subtitleFade 3.5s ease-out 1.2s forwards;
+            opacity: 1;
             pointer-events: auto;
             text-align: center;
+        }
+
+        /* ===== 角色介绍入口按钮 ===== */
+        .btn-characters {
+            margin-top: clamp(1.2rem, 2.5vh, 2.5rem);
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
+            font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+            letter-spacing: 0.3em;
+            padding: 0.6em 2.2em;
+            border: 1px solid rgba(255, 215, 120, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 215, 120, 0.05);
+            color: rgba(255, 215, 120, 0.7);
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(4px);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .btn-characters:hover {
+            background: rgba(255, 215, 120, 0.15);
+            border-color: rgba(255, 215, 120, 0.6);
+            color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 120, 0.1);
+            transform: scale(1.04);
         }
 
         /* ===== 作者 — 右下角落款 ===== */
@@ -203,8 +220,8 @@
             flex-direction: column;
             align-items: flex-end;
             pointer-events: auto;
-            opacity: 0;
-            animation: subtitleFade 4s ease-out 2.2s forwards;
+            opacity: 1;
+            animation: none;
         }
 
         .author-seal {
@@ -216,8 +233,8 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 0.5rem;
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            font-weight: 700;
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
             font-size: clamp(0.5rem, 0.7vw, 0.7rem);
             color: rgba(200, 80, 60, 0.35);
             letter-spacing: 0.05em;
@@ -236,8 +253,8 @@
         }
 
         .author-name {
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
-            font-weight: 700;
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
             font-size: clamp(0.8rem, 1.2vw, 1.1rem);
             letter-spacing: 0.5em;
             background: linear-gradient(90deg,
@@ -252,24 +269,13 @@
         }
 
         .author-sub {
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            font-weight: 300;
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
             font-size: clamp(0.4rem, 0.6vw, 0.55rem);
             color: rgba(255, 215, 120, 0.08);
             letter-spacing: 0.3em;
             margin-top: 0.2rem;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
-        }
-
-        @keyframes subtitleFade {
-            0% {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* ===== 底部版权 ===== */
@@ -280,14 +286,270 @@
             width: 100%;
             z-index: 2;
             text-align: center;
-            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
-            font-weight: 300;
-            font-size: clamp(0.4rem, 0.6vw, 0.6rem);
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
+            font-size: clamp(0.5rem, 0.7vw, 0.7rem);
             letter-spacing: 0.5em;
-            color: rgba(255, 215, 120, 0.04);
+            color: rgba(255, 215, 120, 0.6);
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
             pointer-events: none;
-            animation: subtitleFade 4s ease-out 3s both;
+        }
+
+        /* ==========================================================
+           ★ 角色介绍模态框 ★
+           ========================================================== */
+        .char-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            animation: modalFadeIn 0.4s ease;
+            pointer-events: auto;
+        }
+
+        .char-modal.active {
+            display: flex;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .char-modal-inner {
+            position: relative;
+            width: 92%;
+            max-width: 1400px;
+            max-height: 90vh;
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            background: rgba(10, 8, 6, 0.85);
+            background-image: url('你的背景图链接'); /* ★★★ 替换为你的背景图链接 ★★★ */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 215, 120, 0.15);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: rgba(255, 215, 120, 0.6);
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: #ffd700;
+            transform: rotate(90deg);
+        }
+
+        /* ----- 列表视图 ----- */
+        .char-list-view {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-weight: 400;
+            font-size: clamp(1.8rem, 3vw, 3rem);
+            letter-spacing: 0.4em;
+            color: rgba(255, 215, 120, 0.7);
+            text-shadow: 0 0 30px rgba(255, 215, 120, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ★★★ 横向滚动容器优化 ★★★ */
+        .char-gallery {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1.2rem;
+            padding: 0.5rem 0.5rem 2rem 0.5rem; /* 底部留空让滚动条更易触 */
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-x; /* 明确手势方向，提升响应 */
+            cursor: grab;
+        }
+
+        .char-gallery:active {
+            cursor: grabbing;
+        }
+
+        /* 滚动条整体轨道 */
+        .char-gallery::-webkit-scrollbar {
+            height: 12px;  /* 加粗，更容易触摸 */
+            background: transparent;
+        }
+
+        .char-gallery::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        /* 滚动条滑块 */
+        .char-gallery::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 120, 0.4);
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.3); /* 内边距使滑块视觉更清晰 */
+            min-height: 30px; /* 保证最小可触区域 */
+        }
+
+        .char-gallery::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 215, 120, 0.7);
+        }
+
+        /* 滚动条角落 */
+        .char-gallery::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+
+        /* Firefox 滚动条 */
+        .char-gallery {
+            scrollbar-width: thick; /* 使滚动条变粗 */
+            scrollbar-color: rgba(255, 215, 120, 0.4) rgba(255, 255, 255, 0.05);
+        }
+
+        /* ----- 角色卡片 ----- */
+        .char-item {
+            flex: 0 0 auto;
+            width: clamp(90px, 14vw, 200px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 215, 120, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #1a1410;
+            cursor: pointer;
+        }
+
+        .char-item:hover {
+            transform: scale(1.05) translateY(-6px);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 215, 120, 0.3);
+        }
+
+        .char-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            background: #1a1410;
+        }
+
+        .char-item .char-name {
+            text-align: center;
+            padding: 0.3rem 0;
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            color: rgba(255, 215, 120, 0.7);
+            letter-spacing: 0.1em;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* ----- 详情视图（极简大图） ----- */
+        .char-detail-view {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem;
+            animation: detailFadeIn 0.3s ease;
+            position: relative;
+        }
+
+        .char-detail-view.active {
+            display: flex;
+        }
+
+        @keyframes detailFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .detail-back {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
+            font-size: 2rem;
+            color: rgba(255, 215, 120, 0.5);
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0 0.6rem;
+            border-radius: 30px;
+            line-height: 1.4;
+            border: 1px solid rgba(255, 215, 120, 0.1);
+        }
+
+        .detail-back:hover {
+            color: #ffd700;
+            border-color: rgba(255, 215, 120, 0.4);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .detail-image-wrapper {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 215, 120, 0.15);
+            background: #1a1410;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .detail-image-wrapper:hover {
+            transform: scale(1.01);
+        }
+
+        .detail-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* ===== 响应式 ===== */
@@ -296,7 +558,7 @@
                 letter-spacing: 0.12em;
             }
             .subtitle {
-                letter-spacing: 0.5em;
+                letter-spacing: 0.4em;
             }
             .author-wrapper {
                 bottom: clamp(1.2rem, 2.5vh, 2rem);
@@ -307,17 +569,37 @@
                 height: 28px;
                 font-size: 0.5rem;
             }
+            .char-item {
+                width: clamp(70px, 16vw, 140px);
+            }
+            .modal-close {
+                font-size: 2rem;
+                top: 6px;
+                right: 14px;
+            }
+            .footer {
+                font-size: clamp(0.4rem, 0.6vw, 0.6rem);
+            }
+            .detail-back {
+                font-size: 1.6rem;
+                top: 6px;
+                left: 12px;
+            }
+            /* 手机上滚动条高度稍微调小但仍可触 */
+            .char-gallery::-webkit-scrollbar {
+                height: 10px;
+            }
         }
 
         @media (max-width: 480px) {
             .title {
                 letter-spacing: 0.06em;
-                font-size: clamp(3.8rem, 16vw, 5.5rem);
+                font-size: clamp(3rem, 12vw, 4.5rem);
             }
             .subtitle {
-                letter-spacing: 0.3em;
-                font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-                margin-top: 0.3rem;
+                letter-spacing: 0.25em;
+                font-size: clamp(0.8rem, 1.2vw, 1rem);
+                margin-top: 0.2rem;
             }
             .author-wrapper {
                 bottom: 0.8rem;
@@ -341,10 +623,32 @@
                 display: none;
             }
             .footer {
-                display: none;
+                display: block;
+                font-size: 0.5rem;
+                bottom: 0.8rem;
+                color: rgba(255, 215, 120, 0.5);
             }
             .content {
                 margin-top: -1vh;
+            }
+            .char-item {
+                width: clamp(60px, 20vw, 100px);
+            }
+            .modal-title {
+                font-size: 1.2rem;
+            }
+            .btn-characters {
+                font-size: 0.7rem;
+                padding: 0.4em 1.4em;
+            }
+            .detail-back {
+                font-size: 1.4rem;
+                top: 4px;
+                left: 8px;
+                padding: 0 0.4rem;
+            }
+            .char-gallery::-webkit-scrollbar {
+                height: 8px;
             }
         }
 
@@ -369,10 +673,9 @@
 <body>
 
     <!-- ==========================================================
-    视频背景 — 已更新为你的七牛云链接
+    视频背景
     ========================================================== -->
     <video id="bgVideo" autoplay muted loop playsinline preload="auto">
-        <!-- ★★★ 七牛云视频链接 ★★★ -->
         <source src="http://tih8qixrg.hn-bkt.clouddn.com/7%E6%9C%8820%E6%97%A5%20%281%29.mp4" type="video/mp4" />
         您的浏览器不支持 HTML5 视频。
     </video>
@@ -390,7 +693,10 @@
         <div class="divider-top"></div>
         <h1 class="title">诸天纪元</h1>
         <div class="divider-bottom"></div>
-        <p class="subtitle">—— 一部横跨诸天的史诗巨著 ——</p>
+        <p class="subtitle">—— 一部横跨诸天的群像史诗 ——</p>
+
+        <!-- ★ 角色介绍按钮 ★ -->
+        <button class="btn-characters" id="openCharModal">✦ 角色介绍 ✦</button>
     </div>
 
     <!-- ==========================================================
@@ -406,12 +712,39 @@
     <div class="footer">✦ 万 界 之 上 · 纪 元 之 始 ✦</div>
 
     <!-- ==========================================================
+    ★ 角色介绍模态框 ★
+    ========================================================== -->
+    <div class="char-modal" id="charModal">
+        <div class="char-modal-inner" style="background-image: url('你的背景图链接');">
+            <!-- 关闭按钮 -->
+            <span class="modal-close" id="closeCharModal">✕</span>
+
+            <!-- 列表视图 -->
+            <div class="char-list-view" id="charListView">
+                <div class="modal-title">✦ 角色图鉴 ✦</div>
+                <div class="char-gallery" id="charGallery">
+                    <!-- 6个角色卡片将由JS动态生成 -->
+                </div>
+            </div>
+
+            <!-- 详情视图（极简：只显示16:9大图 + 返回按钮） -->
+            <div class="char-detail-view" id="charDetailView">
+                <div class="detail-back" id="detailBack">‹</div>
+                <div class="detail-image-wrapper" id="detailImageWrapper">
+                    <img id="detailImage" src="" alt="角色大图" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
     JavaScript 控制
     ========================================================== -->
     <script>
         (function() {
             'use strict';
 
+            // ---------- 视频控制 ----------
             const video = document.getElementById('bgVideo');
             const body = document.body;
 
@@ -469,9 +802,120 @@
                 e.preventDefault();
             }, { passive: false });
 
-            console.log('✦ 诸天纪元 · 烈焰炽金版加载完成 ✦');
+            // ---------- ★ 角色数据 ★ ----------
+            const characters = [{
+                name: '幸格',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/xeeg.png'
+            }, {
+                name: '史迪',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/Stitch.png'
+            }, {
+                name: '晨曦',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/cx.png'
+            }, {
+                name: '生枫',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/sf.png'
+            }, {
+                name: '阿怪',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/ag.png'
+            }, {
+                name: '雪月',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/xy.png'
+            }];
+
+            const avatarLinks = [
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/724d6cd56bdbad84bed29bf91173f62421a18ce9/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081306_161_2.jpg',
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081307_162_2.jpg',
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081308_163_2.jpg',
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081310_164_2.jpg',
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081311_165_2.jpg',
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081312_166_2.jpg'
+            ];
+
+            // ---------- 渲染角色列表 ----------
+            const gallery = document.getElementById('charGallery');
+            characters.forEach((char, index) => {
+                const item = document.createElement('div');
+                item.className = 'char-item';
+                item.setAttribute('data-index', index);
+                item.innerHTML = `
+                    <img src="${avatarLinks[index]}" alt="${char.name}" loading="lazy" />
+                    <div class="char-name">${char.name}</div>
+                `;
+                item.addEventListener('click', function() {
+                    openDetail(index);
+                });
+                gallery.appendChild(item);
+            });
+
+            // ---------- 模态框控制 ----------
+            const modal = document.getElementById('charModal');
+            const openBtn = document.getElementById('openCharModal');
+            const closeBtn = document.getElementById('closeCharModal');
+
+            const listView = document.getElementById('charListView');
+            const detailView = document.getElementById('charDetailView');
+            const detailImage = document.getElementById('detailImage');
+            const detailBack = document.getElementById('detailBack');
+            const detailImageWrapper = document.getElementById('detailImageWrapper');
+
+            function openModal() {
+                modal.classList.add('active');
+                listView.style.display = 'flex';
+                detailView.classList.remove('active');
+                detailView.style.display = 'none';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+            }
+
+            function openDetail(index) {
+                const char = characters[index];
+                if (!char) return;
+                detailImage.src = char.detailImage;
+                listView.style.display = 'none';
+                detailView.style.display = 'flex';
+                detailView.classList.remove('active');
+                void detailView.offsetWidth;
+                detailView.classList.add('active');
+            }
+
+            function goBackToList() {
+                detailView.classList.remove('active');
+                detailView.style.display = 'none';
+                listView.style.display = 'flex';
+            }
+
+            detailBack.addEventListener('click', goBackToList);
+            detailImageWrapper.addEventListener('click', goBackToList);
+
+            openBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openModal();
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    if (detailView.classList.contains('active')) {
+                        goBackToList();
+                    } else {
+                        closeModal();
+                    }
+                }
+            });
+
+            console.log('✦ 诸天纪元 · 角色图鉴（优化滚动条）加载完成 ✦');
             console.log('★ 作者：老九门 ★');
-            console.log('★ 视频链接已更新 ★');
+
         })();
     </script>
 
