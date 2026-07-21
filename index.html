@@ -389,7 +389,7 @@
             display: flex;
             flex-wrap: nowrap;
             gap: 1.2rem;
-            padding: 0.5rem 0.5rem 2rem 0.5rem; /* 底部留空让滚动条更易触 */
+            padding: 0.5rem 0.5rem 2rem 0.5rem;
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
@@ -397,7 +397,7 @@
             align-items: center;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            touch-action: pan-x; /* 明确手势方向，提升响应 */
+            touch-action: pan-x;
             cursor: grab;
         }
 
@@ -405,9 +405,8 @@
             cursor: grabbing;
         }
 
-        /* 滚动条整体轨道 */
         .char-gallery::-webkit-scrollbar {
-            height: 12px;  /* 加粗，更容易触摸 */
+            height: 12px;
             background: transparent;
         }
 
@@ -417,26 +416,23 @@
             margin: 0 10px;
         }
 
-        /* 滚动条滑块 */
         .char-gallery::-webkit-scrollbar-thumb {
             background: rgba(255, 215, 120, 0.4);
             border-radius: 10px;
-            border: 2px solid rgba(0, 0, 0, 0.3); /* 内边距使滑块视觉更清晰 */
-            min-height: 30px; /* 保证最小可触区域 */
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            min-height: 30px;
         }
 
         .char-gallery::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 215, 120, 0.7);
         }
 
-        /* 滚动条角落 */
         .char-gallery::-webkit-scrollbar-corner {
             background: transparent;
         }
 
-        /* Firefox 滚动条 */
         .char-gallery {
-            scrollbar-width: thick; /* 使滚动条变粗 */
+            scrollbar-width: thick;
             scrollbar-color: rgba(255, 215, 120, 0.4) rgba(255, 255, 255, 0.05);
         }
 
@@ -475,6 +471,9 @@
             color: rgba(255, 215, 120, 0.7);
             letter-spacing: 0.1em;
             background: rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* ----- 详情视图（极简大图） ----- */
@@ -585,7 +584,6 @@
                 top: 6px;
                 left: 12px;
             }
-            /* 手机上滚动条高度稍微调小但仍可触 */
             .char-gallery::-webkit-scrollbar {
                 height: 10px;
             }
@@ -693,7 +691,7 @@
         <div class="divider-top"></div>
         <h1 class="title">诸天纪元</h1>
         <div class="divider-bottom"></div>
-        <p class="subtitle">—— 一部横跨诸天的群像史诗 ——</p>
+        <p class="subtitle">—— 一部横跨诸天的史诗巨著 ——</p>
 
         <!-- ★ 角色介绍按钮 ★ -->
         <button class="btn-characters" id="openCharModal">✦ 角色介绍 ✦</button>
@@ -723,7 +721,7 @@
             <div class="char-list-view" id="charListView">
                 <div class="modal-title">✦ 角色图鉴 ✦</div>
                 <div class="char-gallery" id="charGallery">
-                    <!-- 6个角色卡片将由JS动态生成 -->
+                    <!-- 角色卡片将由JS动态生成 -->
                 </div>
             </div>
 
@@ -802,44 +800,87 @@
                 e.preventDefault();
             }, { passive: false });
 
-            // ---------- ★ 角色数据 ★ ----------
+            // ---------- ★ 角色数据（共15个角色） ★ ----------
+            // 1-6：原有（第2个“史地”改为“史迪”）
+            // 7-15：新增
             const characters = [{
                 name: '幸格',
-                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/xeeg.png'
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/01-xingge.webp'
             }, {
                 name: '史迪',
-                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/Stitch.png'
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/02-shidi.webp'
             }, {
                 name: '晨曦',
-                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/cx.png'
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/03-chenxi.webp'
             }, {
                 name: '生枫',
-                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/sf.png'
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/06-shengfeng.webp'
             }, {
                 name: '阿怪',
-                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/ag.png'
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/04-aguai.webp'
             }, {
                 name: '雪月',
-                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/72cb34784e4fdde2cd9a49957ba88c1e86a30ac3/xy.png'
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/05-xueyue.webp'
+            }, {
+                name: '青禾',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/07-qinghe.webp' // ★★★ 替换为青禾的16:9大图链接 ★★★
+            }, {
+                name: '青石村村长',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/08-village-chief.webp' // ★★★ 替换为青石村村长的16:9大图链接 ★★★
+            }, {
+                name: '周守山',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/09-zhou-shoushan.webp' // ★★★ 替换为周守山的16:9大图链接 ★★★
+            }, {
+                name: '顾寒舟',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/10-gu-hanzhou.webp' // ★★★ 替换为顾寒舟的16:9大图链接 ★★★
+            }, {
+                name: '韩照',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/11-han-zhao.webp' // ★★★ 替换为韩照的16:9大图链接 ★★★
+            }, {
+                name: '记户吏',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/13-household-clerk.webp' // ★★★ 替换为记户吏的16:9大图链接 ★★★
+            }, {
+                name: '陆沉',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/14-lu-chen.webp' // ★★★ 替换为陆沉的16:9大图链接 ★★★
+            }, {
+                name: '苏闻星',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/15-su-wenxing.webp' // ★★★ 替换为苏闻星的16:9大图链接 ★★★
+            }, {
+                name: '无名引路人',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/16-nameless-guide.webp' // ★★★ 替换为无名引路人的16:9大图链接 ★★★
             }];
 
+            // ---------- 角色头像（9:16小图） ----------
+            // 前6个沿用原链接，新增7-15用占位符
             const avatarLinks = [
                 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/724d6cd56bdbad84bed29bf91173f62421a18ce9/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081306_161_2.jpg',
                 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081307_162_2.jpg',
                 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081308_163_2.jpg',
                 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081310_164_2.jpg',
                 'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081311_165_2.jpg',
-                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081312_166_2.jpg'
+                'https://raw.githubusercontent.com/Sakumoto788/psychic-carnival/b42a4dc92730b56133bd5258579afa6911363bde/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260721081312_166_2.jpg',
+                '#', // 青禾头像
+                '#', // 青石村村长头像
+                '#', // 周守山头像
+                '#', // 顾寒舟头像
+                '#', // 韩照头像
+                '#', // 记户吏头像
+                '#', // 陆沉头像
+                '#', // 苏闻星头像
+                '#' // 无名引路人头像
             ];
 
             // ---------- 渲染角色列表 ----------
             const gallery = document.getElementById('charGallery');
+            // 清空可能存在的占位内容
+            gallery.innerHTML = '';
             characters.forEach((char, index) => {
                 const item = document.createElement('div');
                 item.className = 'char-item';
                 item.setAttribute('data-index', index);
+                const avatarUrl = avatarLinks[index] || '#';
                 item.innerHTML = `
-                    <img src="${avatarLinks[index]}" alt="${char.name}" loading="lazy" />
+                    <img src="${avatarUrl}" alt="${char.name}" loading="lazy" onerror="this.src='#'" />
                     <div class="char-name">${char.name}</div>
                 `;
                 item.addEventListener('click', function() {
@@ -873,7 +914,7 @@
             function openDetail(index) {
                 const char = characters[index];
                 if (!char) return;
-                detailImage.src = char.detailImage;
+                detailImage.src = char.detailImage || '#';
                 listView.style.display = 'none';
                 detailView.style.display = 'flex';
                 detailView.classList.remove('active');
@@ -913,8 +954,9 @@
                 }
             });
 
-            console.log('✦ 诸天纪元 · 角色图鉴（优化滚动条）加载完成 ✦');
+            console.log('✦ 诸天纪元 · 角色图鉴（共15位角色）加载完成 ✦');
             console.log('★ 作者：老九门 ★');
+            console.log('★ 请为新增角色（7-15号）替换头像和16:9大图链接 ★');
 
         })();
     </script>
